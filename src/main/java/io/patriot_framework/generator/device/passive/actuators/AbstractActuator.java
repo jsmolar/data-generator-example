@@ -14,10 +14,10 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.device.passive;
+package io.patriot_framework.generator.device.passive.actuators;
 
 import io.patriot_framework.generator.Data;
-import io.patriot_framework.generator.basicActuators.StateMachine;
+import io.patriot_framework.generator.device.passive.actuators.state.StateMachine;
 import io.patriot_framework.generator.controll.ActuatorCoapController;
 import io.patriot_framework.generator.device.AbstractDevice;
 import org.slf4j.Logger;

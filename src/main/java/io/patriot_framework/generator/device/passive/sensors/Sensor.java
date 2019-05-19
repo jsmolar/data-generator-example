@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.device.passive;
+package io.patriot_framework.generator.device.passive.sensors;
 
 import io.patriot_framework.generator.dataFeed.DataFeed;
 import io.patriot_framework.generator.device.Device;
@@ -27,7 +27,7 @@ import java.util.List;
  *
  * User should use this interface instead of Device.
  */
-public interface DataProducer extends Device {
+public interface Sensor extends Device {
 
     /**
      * Adds DataFeed to Composition
@@ -48,6 +48,6 @@ public interface DataProducer extends Device {
      *
      * @return list of DataFeeds
      */
-    List<DataFeed> getDataFeed();
+    List<DataFeed> getDataFeeds();
 
 }

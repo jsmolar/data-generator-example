@@ -14,33 +14,35 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.device.passive;
+package io.patriot_framework.generator.device.impl.actuators;
 
-import io.patriot_framework.generator.device.Device;
+import io.patriot_framework.generator.device.passive.actuators.AbstractActuator;
+import io.patriot_framework.generator.network.wrappers.DataWrapper;
 
-/**
- * Actuator - part of a machine or system that moves something or makes something work.
- *
- */
-public interface Actuator extends Device {
+public class RotaryActuator extends AbstractActuator {
 
-    /**
-     *
-     */
-    void controlSignal();
+    public RotaryActuator(String label) {
+        super(label);
+    }
 
-    /**
-     *
-     *
-     * @param duration
-     */
-    void setDuration(double duration);
 
-    /**
-     *
-     *
-     * @return
-     */
-    double getDuration();
+    @Override
+    public void startNetworkAdapter() {
 
+    }
+
+    @Override
+    public void stopNetworkAdapter() {
+
+    }
+
+    @Override
+    public DataWrapper getDataWrapper() {
+        return null;
+    }
+
+    @Override
+    public void setDataWrapper(DataWrapper dataWrapper) {
+
+    }
 }

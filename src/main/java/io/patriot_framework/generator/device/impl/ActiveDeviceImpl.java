@@ -14,11 +14,12 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.device.active;
+package io.patriot_framework.generator.device.impl;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.patriot_framework.generator.dataFeed.DataFeed;
 import io.patriot_framework.generator.device.Device;
+import io.patriot_framework.generator.device.active.ActiveDevice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,13 +47,13 @@ public class ActiveDeviceImpl implements ActiveDevice {
     }
 
     @Override
-    public void startSimulation() {
+    public void start() {
         timer.schedule(task(), 0);
         LOGGER.info("Device: " + device.getLabel() + " started active simulation");
     }
 
     @Override
-    public void stopSimulation() {
+    public void stop() {
         timer.cancel();
         timer.purge();
         LOGGER.info("Device: " + device.getLabel() + " stopped active simulation");

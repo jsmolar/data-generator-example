@@ -14,30 +14,39 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.basicDevices;
+package io.patriot_framework.generator.device.impl.sensors;
 
-import io.patriot_framework.generator.converter.DataConverter;
-import io.patriot_framework.generator.converter.DoubleConverter;
 import io.patriot_framework.generator.dataFeed.DataFeed;
-import io.patriot_framework.generator.device.passive.AbstractSingleSensor;
+import io.patriot_framework.generator.device.passive.sensors.AbstractSimpleSensor;
+import io.patriot_framework.generator.network.wrappers.DataWrapper;
 
 /**
  * Class should be used when creating Thermometer sensor. Generic types of DataFeed and Sensor itself are the same.
  *
- * @param <E> type of DataFeed and Sensor
  */
-public class Thermometer extends AbstractSingleSensor {
-
-//    private DataConverter<E,E> dc = new DoubleConverter<>();
-
-    public Thermometer(String label) {
-        super(label);
-//        setDataConverter(dc);
-    }
+public class Thermometer extends AbstractSimpleSensor {
 
     public Thermometer(String label, DataFeed dataFeed) {
         super(label, dataFeed);
-//        setDataConverter(dc);
     }
 
+    @Override
+    public void startNetworkAdapter() {
+
+    }
+
+    @Override
+    public void stopNetworkAdapter() {
+
+    }
+
+    @Override
+    public DataWrapper getDataWrapper() {
+        return null;
+    }
+
+    @Override
+    public void setDataWrapper(DataWrapper dataWrapper) {
+
+    }
 }

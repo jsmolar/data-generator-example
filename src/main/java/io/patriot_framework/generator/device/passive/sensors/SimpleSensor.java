@@ -14,21 +14,26 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.basicDevices;
+package io.patriot_framework.generator.device.passive.sensors;
 
 import io.patriot_framework.generator.dataFeed.DataFeed;
-import io.patriot_framework.generator.device.passive.AbstractDataProducer;
 
-/**
- * This class represents temperature and humidity sensor as Device Composition.
- * Constructor requires two DataFeeds, one for temperature, one for humidity.
- */
-public class DHT11 extends AbstractDataProducer {
+public interface SimpleSensor extends Sensor {
 
-    public DHT11(DataFeed temperature, DataFeed humidity) {
-        super("DHT11");
-        addDataFeed(temperature);
-        addDataFeed(humidity);
-    }
+    /**
+     * Sets DataFeed for Sensor
+     *
+     * @param dataFeed instance of DataFeed
+     */
+    void setDataFeed(DataFeed dataFeed);
 
+    /**
+     * Get sensor's DataFeed
+     */
+    DataFeed getDataFeed();
+
+    /**
+     * Remove sensor's DataFeed
+     */
+    void removeDataFeed();
 }

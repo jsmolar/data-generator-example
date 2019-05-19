@@ -14,25 +14,40 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.basicDevices;
+package io.patriot_framework.generator.device.impl.sensors;
 
 import io.patriot_framework.generator.dataFeed.DataFeed;
-import io.patriot_framework.generator.device.passive.AbstractSingleSensor;
+import io.patriot_framework.generator.device.passive.sensors.AbstractSimpleSensor;
+import io.patriot_framework.generator.network.wrappers.DataWrapper;
 
 /**
- * Default Device class. This should be used when creating device, that is not jet implemented.
+ * SimpleSensor Device class. This should be used when creating device, that is not jet implemented.
  * Otherwise user should use respective Device class.
  */
-public class Default extends AbstractSingleSensor {
+public class SimpleSensor extends AbstractSimpleSensor {
 
-    private String unit = null;
 
-    public Default(String label) {
-        super(label);
-    }
-
-    public Default(String label, DataFeed dataFeed) {
+    public SimpleSensor(String label, DataFeed dataFeed) {
         super(label, dataFeed);
     }
 
+    @Override
+    public void startNetworkAdapter() {
+
+    }
+
+    @Override
+    public void stopNetworkAdapter() {
+
+    }
+
+    @Override
+    public DataWrapper getDataWrapper() {
+        return null;
+    }
+
+    @Override
+    public void setDataWrapper(DataWrapper dataWrapper) {
+
+    }
 }

@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.device.passive;
+package io.patriot_framework.generator.device.passive.sensors;
 
 import io.patriot_framework.generator.Data;
 import io.patriot_framework.generator.controll.SensorCoapController;
@@ -24,19 +24,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Abstract class for device Composition - one unit with multiple DataFeeds
  */
-public abstract class AbstractDataProducer extends AbstractDevice implements DataProducer {
+public abstract class AbstractSensor extends AbstractDevice implements Sensor {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractDataProducer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractSensor.class);
 
-    private List<DataFeed> dataFeed;
+    private List<DataFeed> dataFeeds = new ArrayList<>();
 
-    public AbstractDataProducer(String label) {
+    public AbstractSensor(String label, DataFeed... dataFeeds) {
         super(label);
+        Arrays.asList(dataFeeds).forEach(this::addDataFeed);
         setCoapController(new SensorCoapController(this));
     }
 
@@ -45,7 +48,7 @@ public abstract class AbstractDataProducer extends AbstractDevice implements Dat
         List<Data> result = new ArrayList<>();
 //        HashMap<String, Data> networkData = new HashMap<>();
 
-        for(DataFeed df : dataFeed) {
+        for(DataFeed df : dataFeeds) {
             Data newData = df.getNextValue();
 //            networkData.put(df.getLabel(), newValue);
             result.add(newData);
@@ -62,17 +65,17 @@ public abstract class AbstractDataProducer extends AbstractDevice implements Dat
 
     @Override
     public void addDataFeed(DataFeed dataFeed) {
-        this.dataFeed.add(dataFeed);
+        this.dataFeeds.add(dataFeed);
     }
 
     @Override
     public void removeDataFeed(DataFeed dataFeed) {
-        this.dataFeed.remove(dataFeed);
+        this.dataFeeds.remove(dataFeed);
     }
 
     @Override
-    public List<DataFeed> getDataFeed() {
-        return dataFeed;
+    public List<DataFeed> getDataFeeds() {
+        return Collections.unmodifiableList(dataFeeds);
     }
 
 //    public abstract void setDataConverter(DataConverter<E,T> dataConverter);

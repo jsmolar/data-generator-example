@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.basicActuators;
+package io.patriot_framework.generator.device.passive.actuators.state;
 
 import org.apache.commons.lang3.time.StopWatch;
 

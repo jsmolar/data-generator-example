@@ -14,9 +14,11 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.basicActuators;
+package io.patriot_framework.generator.device.impl.actuators;
 
-import io.patriot_framework.generator.device.passive.AbstractActuator;
+import io.patriot_framework.generator.device.passive.actuators.AbstractActuator;
+import io.patriot_framework.generator.device.passive.actuators.state.StateMachine;
+import io.patriot_framework.generator.network.wrappers.DataWrapper;
 
 public class LinearActuator extends AbstractActuator {
 
@@ -33,21 +35,24 @@ public class LinearActuator extends AbstractActuator {
         );
     }
 
-//    @Override
-//    public String evaluate(double result) {
-//        String ret = null;
-//
-//        if(result == 0.0) {
-//            ret = "Retracted";
-//        } else if(result > 0.0 && result < getDuration() && !isState()) {
-//            ret = "Extending: " + result + "%";
-//        } else if(result > 0.0 && result < getDuration() && isState()) {
-//            ret = "Retracting: " + result + "%";
-//        } else if(result >= getDuration()) {
-//            ret = "Extended";
-//        }
-//
-//        return ret;
-//    }
+    @Override
+    public void startNetworkAdapter() {
+
+    }
+
+    @Override
+    public void stopNetworkAdapter() {
+
+    }
+
+    @Override
+    public DataWrapper getDataWrapper() {
+        return null;
+    }
+
+    @Override
+    public void setDataWrapper(DataWrapper dataWrapper) {
+
+    }
 
 }

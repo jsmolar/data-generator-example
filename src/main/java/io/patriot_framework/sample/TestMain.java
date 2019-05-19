@@ -16,21 +16,21 @@
 
 package io.patriot_framework.sample;
 
-import io.patriot_framework.generator.basicActuators.LinearActuator;
-import io.patriot_framework.generator.device.passive.Actuator;
+import io.patriot_framework.generator.device.impl.actuators.LinearActuator;
+import io.patriot_framework.generator.device.passive.actuators.Actuator;
 
 public class TestMain {
 
     public static void main(String[] args) {
 //        DataFeed df = new NormalDistributionDataFeed(18, 2);
 ////        NetworkAdapter na = new Rest("http://requestbin.fullcontact.com/wv2m0ywv");
-//        DataProducer temperature = new Thermometer("thermometer", df);
+//        Sensor temperature = new Thermometer("thermometer", df);
 ////        temperature.setNetworkAdapter(na);
 //        temperature.startCoapController();
 //
 //        DataFeed tf = new ConstantDataFeed(10000);
 //        ActiveDevice simulation = new ActiveDeviceImpl(tf, temperature);
-//        simulation.startSimulation();
+//        simulation.start();
 
         Actuator actuator = new LinearActuator("aa", 15000);
         actuator.startCoapController();

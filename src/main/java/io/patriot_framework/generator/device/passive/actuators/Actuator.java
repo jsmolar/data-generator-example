@@ -14,16 +14,33 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.basicActuators;
+package io.patriot_framework.generator.device.passive.actuators;
 
-import io.patriot_framework.generator.device.passive.AbstractActuator;
+import io.patriot_framework.generator.device.Device;
 
-public class RotaryActuator extends AbstractActuator {
+/**
+ * Actuator - part of a machine or system that moves something or makes something work.
+ *
+ */
+public interface Actuator extends Device {
 
-    public RotaryActuator(String label) {
-        super(label);
-    }
+    /**
+     *
+     */
+    void controlSignal();
 
+    /**
+     *
+     *
+     * @param duration
+     */
+    void setDuration(double duration);
 
+    /**
+     *
+     *
+     * @return
+     */
+    double getDuration();
 
 }
