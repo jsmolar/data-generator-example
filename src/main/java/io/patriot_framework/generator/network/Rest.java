@@ -18,23 +18,30 @@ package io.patriot_framework.generator.network;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.patriot_framework.generator.Data;
+
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Rest implements NetworkAdapter {
 
     private String endpoint;
 
+    private DataWrapper dataWrapper;
+
     @JsonCreator
-    public Rest(@JsonProperty("endpoint") String endpoint) {
+    public Rest(@JsonProperty("endpoint") String endpoint, @JsonProperty("wrapper") DataWrapper dataWrapper) {
         this.endpoint = endpoint;
+        this.dataWrapper = dataWrapper;
     }
 
-    public void send(String object) {
+    @Override
+    public void send(List<Data> data) {
         HttpClient httpClient = HttpClientBuilder.create().build();
 
         try {
@@ -48,6 +55,16 @@ public class Rest implements NetworkAdapter {
         }
     }
 
+    @Override
+    public void setDataWrapper(DataWrapper dataWrapper) {
+
+    }
+
+    @Override
+    public DataWrapper getDataWrapper() {
+        return null;
+    }
+
     public String getEndpoint() {
         return endpoint;
     }
@@ -55,5 +72,6 @@ public class Rest implements NetworkAdapter {
     public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
     }
+
 }
 

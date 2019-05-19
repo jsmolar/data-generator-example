@@ -33,17 +33,11 @@ public abstract class AbstractDataProducer extends AbstractDevice implements Dat
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractDataProducer.class);
 
-//    private DataConverter transform;
-
     private List<DataFeed> dataFeed;
 
     public AbstractDataProducer(String label) {
         super(label);
         setCoapController(new SensorCoapController(this));
-
-//        if (!inputType.isAssignableFrom(outputType)) {
-//            throw new IllegalArgumentException("DataFeed type is not castable to Sensors type");
-//        }
     }
 
     @Override
@@ -57,22 +51,14 @@ public abstract class AbstractDataProducer extends AbstractDevice implements Dat
             result.add(newData);
         }
 
-//        if(getNetworkAdapter() != null) {
-//            sendData(networkData);
-//        }
+        if(getNetworkAdapter() != null) {
+            getNetworkAdapter().send(result);
+        }
 
         LOGGER.info(this.toString() + " new data: " + result.toString());
 
         return result;
     }
-
-//    private void sendData(HashMap<String, E> data) {
-//        String dw = getDataWrapper().wrapData(this, data);
-//        NetworkAdapter networkAdapter = getNetworkAdapter();
-//        if(networkAdapter != null) {
-//            networkAdapter.send(dw);
-//        }
-//    }
 
     @Override
     public void addDataFeed(DataFeed dataFeed) {

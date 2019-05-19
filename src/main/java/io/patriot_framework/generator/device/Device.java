@@ -20,7 +20,7 @@ import io.patriot_framework.generator.Data;
 import io.patriot_framework.generator.controll.CoapController;
 import io.patriot_framework.generator.events.DataObservable;
 import io.patriot_framework.generator.network.NetworkAdapter;
-import io.patriot_framework.generator.wrappers.DataWrapper;
+import io.patriot_framework.generator.network.wrappers.DataWrapper;
 
 import java.util.List;
 
@@ -41,13 +41,28 @@ public interface Device extends Unit {
      */
     List<Data> requestData(Object... params);
 
+    /**
+     * Enables CoaP communication with Device. Method should create tree of {@link org.eclipse.californium.core.server.resources.Resource}
+     * endpoints and register them to CoaP Server.
+     * Each distinct Device (e.g. Sensor, Actuator ... ) should define Resource tree.
+     */
     void startCoapController();
 
+    /**
+     * Remove all {@link org.eclipse.californium.core.server.resources.Resource} endpoints for Device from CoaP Server,
+     * in order to deny CoaP communication with instance of Device.
+     */
     void stopCoapController();
 
-//    void startNetworkAdapter();
-//
-//    void stopNetworkAdapter();
+    /**
+     *
+     */
+    void startNetworkAdapter();
+
+    /**
+     *
+     */
+    void stopNetworkAdapter();
 
     /**
      * Sets Network Adapter for device which enables sending data wi

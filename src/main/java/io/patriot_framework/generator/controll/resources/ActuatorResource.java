@@ -40,7 +40,7 @@ public class ActuatorResource extends CoapResource {
         exchange.accept();
         actuator.controlSignal();
 
-        exchange.respond(CoAP.ResponseCode.VALID);
+        exchange.respond(CoAP.ResponseCode.CHANGED);
     }
 
     @Override

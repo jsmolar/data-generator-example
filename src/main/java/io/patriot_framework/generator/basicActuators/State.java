@@ -38,14 +38,6 @@ public class State {
         this.isTimeDependent = false;
     }
 
-
-    public String getStatus() {
-        return "a";
-    }
-
-
-
-
     public String getValue() {
         return value;
     }

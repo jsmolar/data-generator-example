@@ -14,34 +14,38 @@
  *    limitations under the License.
  */
 
-package io.patriot_framework.generator.wrappers;
+package io.patriot_framework.generator.network.wrappers;
 
 import io.patriot_framework.generator.device.Device;
-import org.json.JSONObject;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class JSONWrapper<E> implements DataWrapper<E> {
+public class XMLWrapper<E> implements DataWrapper<E> {
 
-    private JSONObject jsonObject = new JSONObject();
+    private Document document = DocumentHelper.createDocument();
 
     @Override
     public String wrapData(Device device, E data) {
-        jsonObject.put("name", device.getLabel())
-            .put("data", data.toString());
+        Element root = document.addElement("root");
+        root.addAttribute("name", device.getLabel())
+            .addAttribute("data", data.toString());
 
-        return jsonObject.toString();
+        return document.asXML();
     }
 
     @Override
     public String wrapData(Device device, HashMap<String, E> data) {
-        jsonObject.put("name", device.getLabel());
+        Element root = document.addElement("root");
+        root.addAttribute("name", device.getLabel());
         for (Map.Entry me : data.entrySet()) {
-            jsonObject.put(me.getKey().toString(), me.getValue().toString());
+            root.addAttribute(me.getKey().toString(), me.getValue().toString());
         }
 
-        return jsonObject.toString();
+        return document.asXML();
     }
 
 }

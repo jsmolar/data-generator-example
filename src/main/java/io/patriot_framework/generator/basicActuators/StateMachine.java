@@ -45,9 +45,11 @@ public class StateMachine {
         if (!checkProgress()) {
             next();
             sw.start();
+
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     private boolean checkProgress() {
@@ -63,7 +65,7 @@ public class StateMachine {
 
     private void next() {
         position++;
-        if (position > states.size()) {
+        if (position >= states.size() ) {
             position = 0;
         }
         current = states.get(position);
